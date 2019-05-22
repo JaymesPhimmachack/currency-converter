@@ -1,27 +1,27 @@
 import React from 'react';
-import Currency from './Currency';
-import CurrencyCalculator from './CurrencyCalculator';
+import CurrencyQuery from './CurrencyQuery';
+
+
 
 class ExchangeRate extends React.Component {
     constructor (props) {
         super(props);
         this.state = {
-            quantity: 1,
+            unit: 1,
             baseCurrencySymbol: 'USD',
             baseCurrency: 'Dollar',
-            pairCurrencySymbol: 'EUR',
-            pairCurrency: 'Euro'
+            crossCurrencySymbol: 'EUR',
+            crossCurrency: 'Euro'
         };
     }
     
     render () {
         return (
             <div>
-            Exchange Rate
-                <Currency />
-                <div>Rate Table</div>
-                <CurrencyCalculator />
-                <div>Currency Calculator Output</div>
+            <h1>Exchange Rate</h1>
+                <CurrencyQuery />
+                <p>Rate Table</p>
+                
             </div>    
         );
     }
