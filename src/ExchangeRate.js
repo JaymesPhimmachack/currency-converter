@@ -98,14 +98,14 @@ class ExchangeRate extends React.Component {
           <div>
             <h3 className="text-center">Exchange Rate</h3>
             <div className="row">
-            <div className="col-4 mt-4">
+            <div className="col-xs-12 col-md-4 mt-4">
               <CurrencyQuery 
                 handleCurrenciesResponse={this.handleCurrenciesResponse} 
                 handleRateTableInput={this.handleRateTableInput} 
                 handleRateTableFirstSelectChange={this.handleRateTableFirstSelectChange}
               />
             </div>
-              <div className="col-8 mt-4">
+              <div className="col-xs-12 col-md-8 mt-4">
             <h6>Rate Table</h6>
              
             { this.renderTable() }

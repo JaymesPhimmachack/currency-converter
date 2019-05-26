@@ -36,19 +36,20 @@ class CurrencyCalculator extends React.Component {
         return (
             <div className="row">
                 <h3 className="text-center col-12">Currency Calculator</h3>
-    
-            <div className="col-4 mt-4 view">
-                <CurrencyQuery 
-                    handleCurrencyResponse={this.handleCurrencyResponse} 
-                    handleCalculatorInput={this.handleCalculatorInput}
-                    handleCalculatorFirstSelectChange = {this.handleCalculatorFirstSelectChange}
-                    handleCalculatorSecondSelectChange = {this.handleCalculatorSecondSelectChange}
-                />
-            </div>    
-                <div className="col-8 mt-4 view">
+
+                <div className="col-xs-12 col-md-4 mt-4">
+                    <CurrencyQuery 
+                        handleCurrencyResponse={this.handleCurrencyResponse} 
+                        handleCalculatorInput={this.handleCalculatorInput}
+                        handleCalculatorFirstSelectChange = {this.handleCalculatorFirstSelectChange}
+                        handleCalculatorSecondSelectChange = {this.handleCalculatorSecondSelectChange}
+                    />
+                </div>    
+                <div className="col-xs-12 col-md-8 mt-4 vh-100">
                     <h6>Currency Rate</h6>
                     <span>{this.state.unit} {this.state.baseCurrency}</span>  = <span>{this.state.crossCurrency} {this.state.rate * this.state.unit}</span>
                 </div>
+   
         </div>
         );
     }

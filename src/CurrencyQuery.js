@@ -116,8 +116,8 @@ class CurrencyQuery extends React.Component {
 
         return (
              <form>
-                <input type="number" value={this.state.unit} onChange={this.handleInputChange} className="mb-3"/>
-                <select value={this.state.baseCurrency} onChange={this.handleFirstSelectChange} className="mb-3">
+                <input type="number" value={this.state.unit} onChange={this.handleInputChange} className="mb-3 mr-2 d-flex w-100"/>
+                <select value={this.state.baseCurrency} onChange={this.handleFirstSelectChange} className="mb-3 mr-2 d-flex w-100">
                   <option value="USD">USD  - US dollar</option>
                   <option value="EUR">EUR  - European euro</option>
                   <option value="JPY">JPY  - Japanese yen</option>
@@ -153,7 +153,7 @@ class CurrencyQuery extends React.Component {
                   <option value="ZAR">ZAR  - South African rand</option>
                 </select>
               { location.pathname === '/currency-calculator' &&
-                <select value={this.state.crossCurrency} onChange={this.handleSecondSelectChange}>
+                <select value={this.state.crossCurrency} onChange={this.handleSecondSelectChange} className="d-flex w-100">
                   <option value="USD">USD  - US dollar</option>
                   <option value="EUR">EUR  - European euro</option>
                   <option value="JPY">JPY  - Japanese yen</option>
