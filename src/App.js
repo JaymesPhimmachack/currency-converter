@@ -10,13 +10,12 @@ import 'bootstrap/dist/css/bootstrap.css';
 const App = () => {
   return (
     <div className="container">
-    
       <Router>
-          <Header />
+        <Header />
           <Switch>
            <Route path="/" exact component={ExchangeRate} />
-          <Route path="/currency-calculator" component={CurrencyCalculator} />
-        </Switch>
+           <Route path="/currency-calculator" component={CurrencyCalculator} />
+          </Switch>
       </Router>
       <Footer />
     </div>

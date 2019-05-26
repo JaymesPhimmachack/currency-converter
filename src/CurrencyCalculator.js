@@ -1,14 +1,55 @@
 import React from 'react';
 import CurrencyQuery from './CurrencyQuery';
-
+  
 class CurrencyCalculator extends React.Component {
+    constructor (props) {
+        super(props);
+        this.state = {
+            unit: 1.00,
+            baseCurrency: 'USD',
+            crossCurrency: 'EUR',
+            rate: 0.89
+        };
+        this.handleCurrencyResponse = this.handleCurrencyResponse.bind(this);
+        this.handleCalculatorInput = this.handleCalculatorInput.bind(this);
+        this.handleCalculatorFirstSelectChange = this.handleCalculatorFirstSelectChange.bind(this);
+        this.handleCalculatorSecondSelectChange = this.handleCalculatorSecondSelectChange.bind(this);
+    }
+    
+    handleCurrencyResponse (baseCurrency, rate, crossCurrency, unit) {
+        this.setState({ unit, baseCurrency, crossCurrency, rate });
+    }
+    
+    handleCalculatorInput(unit) {
+        this.setState({ unit });
+    }
+            
+    handleCalculatorFirstSelectChange (baseCurrency) {
+        this.setState({ baseCurrency });
+    }
+    
+    handleCalculatorSecondSelectChange (crossCurrency) {
+        this.setState({ crossCurrency });
+    }
+
     render () {
         return (
-            <div>
-            <h1>Currency Calculator</h1>
-            <CurrencyQuery />
-            <div>Currency Calculator Output</div>
-            </div>
+            <div className="row">
+                <h3 className="text-center col-12">Currency Calculator</h3>
+    
+            <div className="col-4 mt-4 view">
+                <CurrencyQuery 
+                    handleCurrencyResponse={this.handleCurrencyResponse} 
+                    handleCalculatorInput={this.handleCalculatorInput}
+                    handleCalculatorFirstSelectChange = {this.handleCalculatorFirstSelectChange}
+                    handleCalculatorSecondSelectChange = {this.handleCalculatorSecondSelectChange}
+                />
+            </div>    
+                <div className="col-8 mt-4 view">
+                    <h6>Currency Rate</h6>
+                    <span>{this.state.unit} {this.state.baseCurrency}</span>  = <span>{this.state.crossCurrency} {this.state.rate * this.state.unit}</span>
+                </div>
+        </div>
         );
     }
 }
