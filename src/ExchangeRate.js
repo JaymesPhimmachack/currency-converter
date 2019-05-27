@@ -70,7 +70,7 @@ class ExchangeRate extends React.Component {
               rateList.push(  
                <tr key={rate}>
                 <td>{this.state.currencyNames[rate]}</td>
-                <td>{this.state.rates[rate].toFixed(2) * this.state.unit}</td>
+                <td>{(this.state.rates[rate] * this.state.unit).toFixed(4)}</td>
                </tr>
               );
              }
