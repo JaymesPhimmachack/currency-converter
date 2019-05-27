@@ -12,10 +12,10 @@ const App = () => {
     <div className="container">
       <Router>
         <Header />
-          <Switch>
-           <Route path="/" exact component={ExchangeRate} />
-           <Route path="/currency-calculator" component={CurrencyCalculator} />
-          </Switch>
+        <Switch>
+          <Route path="/" exact component={ExchangeRate} />
+          <Route path="/currency-calculator" component={CurrencyCalculator} />
+        </Switch>
       </Router>
       <Footer />
     </div>

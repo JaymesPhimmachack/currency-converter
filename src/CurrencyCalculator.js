@@ -1,6 +1,6 @@
 import React from 'react';
 import CurrencyQuery from './CurrencyQuery';
-  
+
 class CurrencyCalculator extends React.Component {
     constructor (props) {
         super(props);

@@ -46,36 +46,33 @@ class ExchangeRate extends React.Component {
         };
         this.handleCurrenciesResponse = this.handleCurrenciesResponse.bind(this);
         this.handleRateTableInput= this.handleRateTableInput.bind(this);
-        this.handleRateTableFirstSelectChange = this.handleRateTableFirstSelectChange(this);
-
+        this.handleRateTableFirstSelectChange = this.handleRateTableFirstSelectChange.bind(this);
     }
-    
+
     handleCurrenciesResponse (unit, data) {
         this.setState({ unit: unit, baseCurrency: data.base, rates: data.rates });
     }
-     
+
     handleRateTableInput (unit) {
         this.setState({ unit });
     }
-    
+
     handleRateTableFirstSelectChange (baseCurrency) {
         this.setState({ baseCurrency });
     }
-    
+
     renderTable = () => {
         let rateList = [];
-        
         for (var rate in this.state.rates) {
-            if (rate !== this.state.baseCurrency) {
-              rateList.push(  
-               <tr key={rate}>
-                <td>{this.state.currencyNames[rate]}</td>
-                <td>{(this.state.rates[rate] * this.state.unit).toFixed(4)}</td>
-               </tr>
-              );
-             }
+          if (rate !== this.state.baseCurrency) {
+            rateList.push(
+             <tr key={rate}>
+              <td>{this.state.currencyNames[rate]}</td>
+              <td>{(this.state.rates[rate] * this.state.unit).toFixed(4)}</td>
+             </tr>
+            );
+           }
         }
-        
         return (
           <table className="table">
             <thead>
@@ -83,35 +80,31 @@ class ExchangeRate extends React.Component {
               <th scope="col">{this.state.currencyNames[this.state.baseCurrency]}</th>
               <th scope="col">{this.state.unit} {this.state.baseCurrency}</th>
               </tr>
-            </thead> 
+            </thead>
             <tbody>
               {  rateList }
             </tbody>
-          </table>   
+          </table>
         );
-                
     }
-    
     render () {
-      
         return (
           <div>
             <h3 className="text-center">Exchange Rate</h3>
             <div className="row">
             <div className="col-xs-12 col-md-4 mt-4">
-              <CurrencyQuery 
-                handleCurrenciesResponse={this.handleCurrenciesResponse} 
-                handleRateTableInput={this.handleRateTableInput} 
+              <CurrencyQuery
+                handleCurrenciesResponse={this.handleCurrenciesResponse}
+                handleRateTableInput={this.handleRateTableInput}
                 handleRateTableFirstSelectChange={this.handleRateTableFirstSelectChange}
               />
             </div>
               <div className="col-xs-12 col-md-8 mt-4">
             <h6>Rate Table</h6>
-             
             { this.renderTable() }
             </div>
             </div>
-          </div>    
+          </div>
         );
     }
 }
