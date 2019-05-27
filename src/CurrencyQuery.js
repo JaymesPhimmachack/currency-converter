@@ -30,7 +30,8 @@ class CurrencyQuery extends React.Component {
     }
     
      componentWillUnmount () {
-          this.fetchCurrencies();
+          // this.fetchCurrencies();
+          // don't need this
      }
     
     componentDidUpdate() {
@@ -88,32 +89,27 @@ class CurrencyQuery extends React.Component {
     
     handleFirstSelectChange (event) {
         const { location } = this.props;
-        
-        this.setState({ baseCurrency: event.target.value });
-        
-       if (location.pathname === '/currency-calculator') {
-           this.props.handleCalculatorFirstSelectChange(event.target.value );
-       } else {       
 
-           this.props.handleRateTableFirstSelectChange(event.target.value);
-       }
-    
+        this.setState({ baseCurrency: event.target.value });
+
+        if (location.pathname === '/currency-calculator') {
+          this.props.handleCalculatorFirstSelectChange(event.target.value);
+        } else {
+          this.props.handleRateTableFirstSelectChange(event.target.value);
+        }
     }
-    
+
     handleSecondSelectChange (event) {
         const { location } = this.props;
         this.setState({ crossCurrency: event.target.value });
-        
-         if (location.pathname === '/currency-calculator') {
-           this.props.handleCalculatorSecondSelectChange(event.target.value);
-       }  
-      
+
+        if (location.pathname === '/currency-calculator') {
+          this.props.handleCalculatorSecondSelectChange(event.target.value);
+        }
     }
-    
+
     render () {
         const { location } = this.props;
-
-
         return (
              <form>
                 <input type="number" value={this.state.unit} onChange={this.handleInputChange} className="mb-3 mr-2 d-flex w-100"/>
