@@ -39,7 +39,6 @@ class CurrencyCalculator extends React.Component {
 				return response.json();
 			})
 			.then((data) => {
-				console.log(crossCurrency,  data.rates)
 					this.setState({ isLoading: false, rate: data.rates[crossCurrency] });
 			})
 			.catch((error) => {
