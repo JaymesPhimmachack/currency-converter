@@ -8,16 +8,16 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 const App = () => {
 	return (
-		<div className="container">
-			<Router>
+		<Router>
+			<div className="container">
 				<Header />
 				<Switch>
 					<Route path="/" exact component={ExchangeRate} />
 					<Route path="/currency-calculator" component={CurrencyCalculator} />
 				</Switch>
-			</Router>
+			</div>
 			<Footer />
-		</div>
+		</Router>
 	);
 };
 
