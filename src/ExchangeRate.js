@@ -5,7 +5,6 @@ import CurrencyQuery from './CurrencyQuery';
 class ExchangeRate extends React.Component {
 	constructor(props) {
 		super(props);
-		this._isMounted = false;
 		this.state = {
 			loadingData: true,
 			unit: 1.0,
@@ -53,16 +52,6 @@ class ExchangeRate extends React.Component {
 	}
 
 	componentDidMount() {
-		this._isMounted = true;
-		this.fetchCurrencies();
-	}
-
-	componentDidUpdate() {
-		this.fetchCurrencies();
-	}
-
-	componentWillUnmount() {
-		this._isMounted = false;
 		this.fetchCurrencies();
 	}
 
@@ -72,9 +61,7 @@ class ExchangeRate extends React.Component {
 				return response.json();
 			})
 			.then((data) => {
-				if (this._isMounted) {
 					this.setState({ loadingData: false, rates: data.rates });
-				}
 			})
 			.catch((error) => {
 				console.log(error);
@@ -87,6 +74,7 @@ class ExchangeRate extends React.Component {
 
 	handleFirstSelectChange(baseCurrency) {
 		this.setState({ baseCurrency });
+		this.fetchCurrencies();
 	}
 
 	renderTable = () => {
@@ -115,6 +103,7 @@ class ExchangeRate extends React.Component {
 			</table>
 		);
 	};
+	
 	render() {
 		return (
 			<div>

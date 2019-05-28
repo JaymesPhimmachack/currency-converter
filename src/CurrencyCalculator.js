@@ -5,7 +5,6 @@ import CurrencyQuery from './CurrencyQuery';
 class CurrencyCalculator extends React.Component {
 	constructor(props) {
 		super(props);
-		this._isMounted = false;
 		this.state = {
 			isLoading: true,
 			unit: 1,
@@ -21,16 +20,6 @@ class CurrencyCalculator extends React.Component {
 	}
 
 	componentDidMount() {
-		this._isMounted = true;
-		this.fetchCurrency();
-	}
-
-	componentDidUpdate() {
-		this.fetchCurrency();
-	}
-
-	componentWillUnmount() {
-		this._isMounted = false;
 		this.fetchCurrency();
 	}
 
@@ -43,9 +32,7 @@ class CurrencyCalculator extends React.Component {
 				return response.json();
 			})
 			.then((data) => {
-				if (this._isMounted) {
 					this.setState({ isLoading: false, rate: data.rates[this.state.crossCurrency] });
-				}
 			})
 			.catch((error) => {
 				console.log(error);
@@ -58,10 +45,12 @@ class CurrencyCalculator extends React.Component {
 
 	handleFirstSelectChange(baseCurrency) {
 		this.setState({ baseCurrency });
+		this.fetchCurrency();
 	}
 
 	handleSecondSelectChange(crossCurrency) {
 		this.setState({ crossCurrency });
+		this.fetchCurrency();
 	}
 
 	render() {
